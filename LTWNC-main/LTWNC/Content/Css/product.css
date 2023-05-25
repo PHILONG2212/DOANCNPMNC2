@@ -1,0 +1,125 @@
+﻿html,
+body {
+    position: relative;
+    height: 100%;
+    margin: 0px;
+}
+
+.listproduct {
+    margin: 0 100px 0 100px;
+}
+
+body {
+    background-color: white;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #000;
+}
+
+.cancle {
+    border: none;
+    box-shadow: none;
+    flex-wrap: wrap;
+    padding: 3px 1rem;
+    margin-bottom: 1rem;
+    list-style: none;
+    background-color: #e9ecef;
+    border-radius: 0.25rem;
+}
+
+.tlai a {
+    color: #007bff;
+}
+
+.choose {
+    float: left;
+}
+
+.search {
+    float: right;
+}
+
+.swiper {
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.swiper-slide {
+    background-position: center;
+    background-size: cover;
+    width: 300px;
+    height: 300px;
+}
+
+.thongtin {
+    padding-left: 80px;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+}
+
+button {
+    border: none;
+    outline: none;
+    padding: 12px 16px;
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #0057c7;
+    color: white;
+}
+
+.btn.active1 {
+    background-color: #4285f4;
+    color: white;
+}
+
+.khung {
+    border-radius: 5px;
+    height: 31px;
+    border: 1px #5f5f5f solid
+}
+
+.photo {
+    width: 200px;
+    float: left;
+    margin-right: 10px;
+}
+
+.infomation {
+    margin-left: 200px;
+}
+
+    .infomation .mota {
+        width: 90%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        line-height: 22px;
+        -webkit-line-clamp: 2;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        margin-bottom: 10px;
+        color: #4a4a4a;
+    }
+
+.ke {
+    margin: 5px 0 10px 10px;
+    border-bottom: 1px #dadada solid;
+}
+
+.Dongia {
+    color: orangered;
+    font-size: 16px;
+}
+
+.mua {
+    background-color: #4285f4;
+    padding: 8px 11px;
+    color: white;
+    border-radius: 8px;
+}

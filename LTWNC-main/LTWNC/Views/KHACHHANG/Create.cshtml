@@ -1,0 +1,79 @@
+﻿@model LTWNC.Models.KHACHHANG
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutManagement.cshtml";
+}
+
+<link href="~/Content/management-form.css" rel="stylesheet" />
+<script src="~/Scripts/main.js" language="JavaScript" type="text/javascript"></script>
+<div class="box-form">
+
+    @using (Html.BeginForm(Html.BeginForm("Create", "KHACHHANG", FormMethod.Post, new { @enctype = "multipart/form-data" })))
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4 class="title-form">Thêm Khách hàng</h4>
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group row p-0">
+            <span class="col label-name">ID Khách hàng</span>
+            @Html.EditorFor(model => model.IDKH, new { htmlAttributes = new { @class = "input-form col-10" } })
+            @Html.ValidationMessageFor(model => model.IDKH, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group row p-0">
+            <span class="col label-name">Họ Và Tên</span>
+            @Html.EditorFor(model => model.HOTENKH, new { htmlAttributes = new { @class = "input-form col-10" } })
+            @Html.ValidationMessageFor(model => model.HOTENKH, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group row p-0">
+            <span class="col label-name">Email</span>
+            @Html.EditorFor(model => model.EMAIL, new { htmlAttributes = new { @class = "input-form col-10" } })
+            @Html.ValidationMessageFor(model => model.EMAIL, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group row p-0">
+            <span class="col label-name">Số điện thoại</span>
+            @Html.EditorFor(model => model.SDT, new { htmlAttributes = new { @class = "input-form col-10" } })
+            @Html.ValidationMessageFor(model => model.SDT, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group row p-0">
+            <span class="col label-name">Địa Chỉ</span>
+            @Html.EditorFor(model => model.DIACHI, new { htmlAttributes = new { @class = "input-form col-10" } })
+            @Html.ValidationMessageFor(model => model.DIACHI, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group row p-0">
+            <span class="col label-name">Hình Ảnh</span>
+            <div class="input-form col-10">
+                <img src="~/Content/Images/No_Image_Available.jpg" class="img-create" alt="Thêm khách hàng" id="previewImg" />
+                <input type="file" style="display: inline; width: 60%;" name="UploadImage" onchange="ChangeImage(this, document.getElementById('previewImg'))" />
+            </div>
+            @Html.ValidationMessageFor(model => model.AVATARKH, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group row p-0">
+            <span class="col label-name">Loại khách hàng</span>
+            @Html.DropDownList("IDLKH", null, htmlAttributes: new { @class = "input-form col-10" })
+            @Html.ValidationMessageFor(model => model.IDLKH, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group row p-0">
+            <span class="col label-name">Khuyến mãi</span>
+            @Html.DropDownList("IDKM", null, htmlAttributes: new { @class = "input-form col-10" })
+            @Html.ValidationMessageFor(model => model.IDKM, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-btn d-flex justify-content-center form-btn">
+            <input type="submit" value="Thêm Khách hàng" class="btn btn-primary" style="width: 100%" />
+        </div>
+    </div>
+    }
+</div>
+<div>
+    @Html.ActionLink("Trở lại", "KhachHang","Management")
+</div>
+@Scripts.Render("~/bundles/jquery")

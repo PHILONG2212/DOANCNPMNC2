@@ -1,0 +1,559 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <SSDTUnitTestPath Condition="'$(SSDTUnitTestPath)' == ''">$(VsInstallRoot)\Common7\IDE\Extensions\Microsoft\SQLDB</SSDTUnitTestPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SSDTPath Condition="'$(SSDTPath)' == ''">$(VsInstallRoot)\Common7\IDE\Extensions\Microsoft\SQLDB\DAC</SSDTPath>
+  </PropertyGroup>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4FBEC0CB-93FD-4969-81E9-0665F602E12B}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LTWNC</RootNamespace>
+    <AssemblyName>LTWNC</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.2.0.1\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.9\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.9\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\DANHMUCsController.cs" />
+    <Compile Include="Controllers\DONHANGController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KHACHHANGController.cs" />
+    <Compile Include="Controllers\KHUYENMAIsController.cs" />
+    <Compile Include="Controllers\ManagementController.cs" />
+    <Compile Include="Controllers\NotiController.cs" />
+    <Compile Include="Controllers\PersonnelController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CartItem.cs" />
+    <Compile Include="Models\CHUCVU.cs">
+      <DependentUpon>tourdulich.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CONTACT.cs">
+      <DependentUpon>tourdulich.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CTDH.cs">
+      <DependentUpon>tourdulich.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CTGIAOHANG.cs">
+      <DependentUpon>tourdulich.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DANHMUC.cs">
+      <DependentUpon>tourdulich.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DONHANG.cs">
+      <DependentUpon>tourdulich.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FEEDBACK.cs">
+      <DependentUpon>tourdulich.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\KHACHHANG.cs">
+      <DependentUpon>tourdulich.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\KHAOSAT.cs">
+      <DependentUpon>tourdulich.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\KHUYENMAI.cs">
+      <DependentUpon>tourdulich.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LOAIKHACHHANG.cs">
+      <DependentUpon>tourdulich.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NHANVIEN.cs">
+      <DependentUpon>tourdulich.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>tourdulich.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TAIKHOAN.cs">
+      <DependentUpon>tourdulich.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TOUR.cs">
+      <DependentUpon>tourdulich.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tourdulich.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>tourdulich.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tourdulich.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>tourdulich.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tourdulich.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>tourdulich.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-grid.rtl.css" />
+    <Content Include="Content\bootstrap-grid.rtl.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap-reboot.rtl.css" />
+    <Content Include="Content\bootstrap-reboot.rtl.min.css" />
+    <Content Include="Content\bootstrap-utilities.css" />
+    <Content Include="Content\bootstrap-utilities.min.css" />
+    <Content Include="Content\bootstrap-utilities.rtl.css" />
+    <Content Include="Content\bootstrap-utilities.rtl.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap.rtl.css" />
+    <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\Css\carousel\css-carousel\ajax-loader.gif" />
+    <Content Include="Content\Css\carousel\css-carousel\owl.carousel.css" />
+    <Content Include="Content\Css\carousel\css-carousel\owl.carousel.min.css" />
+    <Content Include="Content\Css\carousel\css-carousel\owl.theme.default.css" />
+    <Content Include="Content\Css\carousel\css-carousel\owl.theme.default.min.css" />
+    <Content Include="Content\Css\carousel\css-carousel\owl.theme.green.css" />
+    <Content Include="Content\Css\carousel\css-carousel\owl.theme.green.min.css" />
+    <Content Include="Content\Css\carousel\css-carousel\owl.video.play.png" />
+    <Content Include="Content\Css\carousel\jq-carousef\owl.carousel.min.js" />
+    <Content Include="Content\Css\feedback.css" />
+    <Content Include="Content\Css\Home.css" />
+    <Content Include="Content\Css\product.css" />
+    <Content Include="Content\Css\productDetail.css" />
+    <Content Include="Content\Css\profile.css" />
+    <Content Include="Content\Css\purchaseOrder.css" />
+    <Content Include="Content\Css\style.min.css" />
+    <Content Include="Content\Css\user.css" />
+    <Content Include="Content\globalStyles.css" />
+    <Content Include="Content\Images\avatar.jpg" />
+    <Content Include="Content\Images\avatar.png" />
+    <Content Include="Content\Images\canh-sac-da-lat-xu-ngan-hoa.jpg" />
+    <Content Include="Content\Images\canh-sac-pho-thi-sai-gon-cho-lon-tb-2022.jpg" />
+    <Content Include="Content\Images\cartnull.png" />
+    <Content Include="Content\Images\email.png" />
+    <Content Include="Content\Images\gian.jpg" />
+    <Content Include="Content\Images\gio-nam-tham-thi.jpg" />
+    <Content Include="Content\Images\id-card.png" />
+    <Content Include="Content\Images\key.png" />
+    <Content Include="Content\Images\LOGO.png" />
+    <Content Include="Content\Images\me-con-su-tu.jpg" />
+    <Content Include="Content\Images\nguoi-phu-nu-uy-luc-nhat-o-day-la-ban.jpg" />
+    <Content Include="Content\Images\nhu-doa-hoa-suong.jpg" />
+    <Content Include="Content\Images\No_Image_Available.jpg" />
+    <Content Include="Content\Images\phone-call.png" />
+    <Content Include="Content\Images\placeholder.png" />
+    <Content Include="Content\Images\user.png" />
+    <Content Include="Content\Images\voi-ngay-nhu-la-thang-nhu-may.jpg" />
+    <Content Include="Content\management-form.css" />
+    <Content Include="Content\ManagementLayout.css" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Images\346097215_1709573629468639_775194426292680166_n.png" />
+    <Content Include="Images\Banner_10_nam_Pham_Duy_890x396px.jpg" />
+    <Content Include="Images\Banner_KM_Thang_4_890x396px-01.jpg" />
+    <Content Include="Images\Banner_Sach_NV_Free_gift_890x396px-01__2_.jpg" />
+    <Content Include="Images\bo-tuyet.jpg" />
+    <Content Include="Images\book1.png" />
+    <Content Include="Images\book2.png" />
+    <Content Include="Images\book3.png" />
+    <Content Include="Images\Cac-cong-ty-to-chuc-tour-du-lich-uy-tin.jpg" />
+    <Content Include="Images\cambridge.jpg" />
+    <Content Include="Images\cengage.jpg" />
+    <Content Include="Images\CHAUAU.jpg" />
+    <Content Include="Images\CHAUAU2.jpg" />
+    <Content Include="Images\CHAUAU3.jpg" />
+    <Content Include="Images\CHAUAU4.jpg" />
+    <Content Include="Images\Check-in-Moana-3.jpg" />
+    <Content Include="Images\doi-du-nu.jpg" />
+    <Content Include="Images\DUBAI.jpg" />
+    <Content Include="Images\DUBAI2.jpg" />
+    <Content Include="Images\DUBAI3.jpg" />
+    <Content Include="Images\DUBAI4.jpg" />
+    <Content Include="Images\HANOI.jpg" />
+    <Content Include="Images\HANOI2.jpg" />
+    <Content Include="Images\HANOI3.jpg" />
+    <Content Include="Images\HANOI4.jpg" />
+    <Content Include="Images\HANQUOC.jpg" />
+    <Content Include="Images\HANQUOC2.jpg" />
+    <Content Include="Images\HANQUOC3.jpg" />
+    <Content Include="Images\HANQUOC4.jpg" />
+    <Content Include="Images\kinhtectri.png" />
+    <Content Include="Images\lichsudang.png" />
+    <Content Include="Images\luat-tam-thuc-bc.jpg" />
+    <Content Include="Images\macgrawhill.jpg" />
+    <Content Include="Images\macmilan.jpg" />
+    <Content Include="Images\miyama-dieu-nhay-danh-tang-rieng-anh.jpg" />
+    <Content Include="Images\oxford-02.jpg" />
+    <Content Include="Images\penguin.jpg" />
+    <Content Include="Images\LOGO.png" />
+    <Content Include="Images\sieee.jpg" />
+    <Content Include="Images\su-song-vu-tru-va-van-vat.jpg" />
+    <Content Include="Images\su-thinh-vuong-dich-thuc.jpg" />
+    <Content Include="Images\tarot-wisdom-tap-2.jpg" />
+    <Content Include="Images\THAILAN.jpg" />
+    <Content Include="Images\THAILAN2.jpg" />
+    <Content Include="Images\THAILAN3.jpg" />
+    <Content Include="Images\THAILAN4.jpg" />
+    <Content Include="Images\that-lac-coi-nguoi-tb-2022.jpg" />
+    <Content Include="Images\triethoc.png" />
+    <Content Include="Images\tthcm.png" />
+    <Content Include="Models\tourdulich.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>tourdulich.edmx</DependentUpon>
+      <LastGenOutput>tourdulich.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\tourdulich.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>tourdulich.edmx</DependentUpon>
+      <LastGenOutput>tourdulich.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.esm.js" />
+    <Content Include="Scripts\bootstrap.esm.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\JavaScript\bootstrap.min.js" />
+    <Content Include="Scripts\JavaScript\easing\easing.js" />
+    <Content Include="Scripts\JavaScript\easing\easing.min.js" />
+    <Content Include="Scripts\JavaScript\jquery.min.js" />
+    <Content Include="Scripts\JavaScript\main.js" />
+    <Content Include="Scripts\JavaScript\owlcarousel\LICENSE" />
+    <EntityDeploy Include="Models\tourdulich.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>tourdulich.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\tourdulich.edmx.diagram">
+      <DependentUpon>tourdulich.edmx</DependentUpon>
+    </Content>
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\JavaScript\Home.js" />
+    <Content Include="Scripts\JavaScript\owlcarousel\assets\ajax-loader.gif" />
+    <Content Include="Scripts\JavaScript\owlcarousel\assets\owl.carousel.css" />
+    <Content Include="Scripts\JavaScript\owlcarousel\assets\owl.carousel.min.css" />
+    <Content Include="Scripts\JavaScript\owlcarousel\assets\owl.theme.default.css" />
+    <Content Include="Scripts\JavaScript\owlcarousel\assets\owl.theme.default.min.css" />
+    <Content Include="Scripts\JavaScript\owlcarousel\assets\owl.theme.green.css" />
+    <Content Include="Scripts\JavaScript\owlcarousel\assets\owl.theme.green.min.css" />
+    <Content Include="Scripts\JavaScript\owlcarousel\assets\owl.video.play.png" />
+    <Content Include="Scripts\JavaScript\owlcarousel\owl.carousel.js" />
+    <Content Include="Scripts\JavaScript\owlcarousel\owl.carousel.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.dataTables.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\main.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutHomePage.cshtml" />
+    <Content Include="Views\Cart\ShoppingCart.cshtml" />
+    <Content Include="Views\Cart\ThanhToan.cshtml" />
+    <Content Include="Views\Product\Shop.cshtml" />
+    <Content Include="Views\Product\LayDanhMuc.cshtml" />
+    <Content Include="Views\Product\SPTheoDanhMuc.cshtml" />
+    <Content Include="Views\Product\DemSPInDM.cshtml" />
+    <Content Include="Views\Product\DemSPInGia.cshtml" />
+    <Content Include="Views\Profile\PurchaseOrder.cshtml" />
+    <Content Include="Views\Profile\TrangThaiCB.cshtml" />
+    <Content Include="Views\Profile\CancelOrder.cshtml" />
+    <Content Include="Views\Profile\ListProductstatus.cshtml" />
+    <Content Include="Views\Profile\datatable.cshtml" />
+    <Content Include="Views\Product\Feadback.cshtml" />
+    <Content Include="Views\Product\InfoSPFeeback.cshtml" />
+    <Content Include="Views\Home\Register.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Profile\Edit.cshtml" />
+    <Content Include="Views\Shared\_LayoutManagement.cshtml" />
+    <Content Include="Views\Management\Index.cshtml" />
+    <Content Include="Views\Noti\NotificationPartial.cshtml" />
+    <Content Include="Views\Cart\CartNull.cshtml" />
+    <Content Include="Views\Shared\_LayoutBase.cshtml" />
+    <Content Include="Views\Management\ProductsManagement.cshtml" />
+    <Content Include="Views\Product\Create.cshtml" />
+    <Content Include="Views\Product\Edit.cshtml" />
+    <Content Include="Views\Product\Delete.cshtml" />
+    <Content Include="Views\Cart\ConfirmCart.cshtml" />
+    <Content Include="Views\Cart\SuccessOrder.cshtml" />
+    <Content Include="Views\Management\Tracking.cshtml" />
+    <Content Include="Views\Profile\TrackingPartial.cshtml" />
+    <Content Include="Views\Personnel\Index.cshtml" />
+    <Content Include="Views\Personnel\Create.cshtml" />
+    <Content Include="Views\Personnel\Edit.cshtml" />
+    <Content Include="Views\Personnel\Details.cshtml" />
+    <Content Include="Views\Cart\CartPartial.cshtml" />
+    <Content Include="Views\Product\ProductDetail.cshtml" />
+    <Content Include="Views\Product\SanPhamCungLoai.cshtml" />
+    <Content Include="Views\Product\LayHinh.cshtml" />
+    <Content Include="Views\Product\SanPhamCoTheThich.cshtml" />
+    <Content Include="Views\KHUYENMAIs\Create.cshtml" />
+    <Content Include="Views\KHUYENMAIs\Delete.cshtml" />
+    <Content Include="Views\KHUYENMAIs\Edit.cshtml" />
+    <Content Include="Views\Management\QuanlyKhuyenMai.cshtml" />
+    <Content Include="Views\Product\KhuyenMai.cshtml" />
+    <Content Include="Views\Management\KhachHang.cshtml" />
+    <Content Include="Views\KHACHHANG\Create.cshtml" />
+    <Content Include="Views\KHACHHANG\Delete.cshtml" />
+    <Content Include="Views\KHACHHANG\Details.cshtml" />
+    <Content Include="Views\KHACHHANG\Edit.cshtml" />
+    <Content Include="Views\KHUYENMAIs\Details.cshtml" />
+    <Content Include="Views\DANHMUCs\Create.cshtml" />
+    <Content Include="Views\DANHMUCs\Delete.cshtml" />
+    <Content Include="Views\DANHMUCs\Details.cshtml" />
+    <Content Include="Views\DANHMUCs\Edit.cshtml" />
+    <Content Include="Views\Management\QuanlyDanhMuc.cshtml" />
+    <Content Include="Views\Home\KhaoSat.cshtml" />
+    <Content Include="Views\Management\KhaoSat.cshtml" />
+    <Content Include="Views\Management\CreateKS.cshtml" />
+    <Content Include="Views\Management\EditKS.cshtml" />
+    <Content Include="Views\Management\DeleteKS.cshtml" />
+    <Content Include="Views\Management\DetailsKS.cshtml" />
+    <Content Include="Views\Management\DONHANG.cshtml" />
+    <Content Include="Views\DONHANG\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap.rtl.min.css.map" />
+    <Content Include="Content\bootstrap.rtl.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.css.map" />
+    <Content Include="Content\bootstrap-utilities.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-grid.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.esm.min.js.map" />
+    <Content Include="Scripts\bootstrap.esm.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup Condition="$(VisualStudioVersion) == '17.0'">
+    <Reference Include="Microsoft.Data.Tools.Schema.Sql, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>$(SSDTPath)\Microsoft.Data.Tools.Schema.Sql.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Data.Tools.Schema.Sql.UnitTesting, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>$(SSDTUnitTestPath)\Microsoft.Data.Tools.Schema.Sql.UnitTesting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Data.Tools.Schema.Sql.UnitTestingAdapter, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>$(SSDTUnitTestPath)\Microsoft.Data.Tools.Schema.Sql.UnitTestingAdapter.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>51309</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:51309/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <PropertyGroup>
+    <SsdtUnitTestVersion>3.1</SsdtUnitTestVersion>
+  </PropertyGroup>
+  <Import Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.Sql.UnitTesting.targets" Condition="$(VisualStudioVersion) != '15.0' And '$(SQLDBExtensionsRefPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.Sql.UnitTesting.targets" Condition="$(VisualStudioVersion) != '15.0' And '$(SQLDBExtensionsRefPath)' == ''" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

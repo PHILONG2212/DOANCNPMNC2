@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1585276a6f194a62933b0d95fc87a269" Name="Diagram1">
+        <EntityTypeShape EntityType="tourdulichModel.CHUCVU" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="tourdulichModel.CONTACT" Width="1.5" PointX="5.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="tourdulichModel.CTDH" Width="1.5" PointX="7.5" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="tourdulichModel.CTGIAOHANG" Width="1.5" PointX="7.5" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="tourdulichModel.DANHMUC" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="tourdulichModel.DONHANG" Width="1.5" PointX="5.25" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="tourdulichModel.FEEDBACK" Width="1.5" PointX="10.5" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="tourdulichModel.KHACHHANG" Width="1.5" PointX="3" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="tourdulichModel.KHAOSAT" Width="1.5" PointX="7.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="tourdulichModel.KHUYENMAI" Width="1.5" PointX="0.75" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="tourdulichModel.LOAIKHACHHANG" Width="1.5" PointX="0.75" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="tourdulichModel.NHANVIEN" Width="1.5" PointX="3" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="tourdulichModel.TAIKHOAN" Width="1.5" PointX="9.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="tourdulichModel.TOUR" Width="1.5" PointX="5.25" PointY="2.125" IsExpanded="true" />
+        <AssociationConnector Association="tourdulichModel.FK_NHANVIEN_CHUCVU" ManuallyRouted="false" />
+        <AssociationConnector Association="tourdulichModel.FK__CTDH__IDDH__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="tourdulichModel.FK__CTDH__IDTOUR__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="tourdulichModel.FK_CTGIAOHANG_DONHANG" ManuallyRouted="false" />
+        <AssociationConnector Association="tourdulichModel.FK_TOUR_DANHMUC" ManuallyRouted="false" />
+        <AssociationConnector Association="tourdulichModel.FK__DONHANG__IDKH__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="tourdulichModel.FK_FEEDBACK_KHACHHANG" ManuallyRouted="false" />
+        <AssociationConnector Association="tourdulichModel.FK_FEEDBACK_TOUR" ManuallyRouted="false" />
+        <AssociationConnector Association="tourdulichModel.FK_KHACHHANG_LOAIKHACHHANG" ManuallyRouted="false" />
+        <AssociationConnector Association="tourdulichModel.FK_KHUYENMAI_KHACHHANG" ManuallyRouted="false" />
+        <AssociationConnector Association="tourdulichModel.FK_TOUR_NHANVIEN" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="tourdulichModel.sysdiagram" Width="1.5" PointX="7.375" PointY="9.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

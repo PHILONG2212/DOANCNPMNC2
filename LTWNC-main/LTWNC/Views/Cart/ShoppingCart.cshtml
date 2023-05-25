@@ -1,0 +1,236 @@
+@using LTWNC.Models;
+@model List<CartItem>
+@{
+    ViewBag.Title = "Giỏ hàng";
+    Layout = "~/Views/Shared/_LayoutBase.cshtml";
+    KHACHHANG customer = Session["TaiKhoan"] as KHACHHANG;
+}
+
+<!-- Cart Start -->
+<div class="container-fluid">
+    <div class="row px-xl-5">
+        <div class="col-lg-8 table-responsive mb-5">
+            <table class="table table-bordered text-center mb-0">
+                <thead class="bg-secondary text-dark">
+                    <tr>
+                        <th>Tên sách</th>
+                        <th>Giá</th>
+                        <th>Số lượng</th>
+                        <th>Tổng</th>
+                        <th>Xóa</th>
+                    </tr>
+                </thead>
+                <tbody class="align-middle">
+                    @if (Convert.ToInt32(ViewBag.TotalNumber) >= 1)
+                     {
+                        foreach (var product in Model)
+                        {
+                            <tr>
+                                @*Tên sách*@
+                                <td class="align-middle">
+                                    <a href="@Url.Action("ProductDetai", "Product", new {id = product.IDTOUR})">
+                                        <img src="@Url.Content(product.HINHANH)" height="100" width="100" class="p-2" />
+                                        @product.TENTOUR
+                                    </a>
+                                </td>
+                                @*Giá tiền*@
+                                <td class="align-middle">@Convert.ToDecimal(product.DONGIA).ToString("N0")đ</td>
+                                <td class="align-middle">
+                                    @using (Html.BeginForm("UpdateCartItem", "Cart", new { id = product.IDTOUR }))
+                                    {
+                                        @*Số lượng*@
+                                        <div class="input-group quantity mx-auto" style="width: 100px;">
+                                            <div class="input-group-btn">
+                                                <button class="btn btn-sm btn-primary btn-minus">
+                                                    <i class="fa fa-minus"></i>
+                                                </button>
+                                            </div>
+                                            <input type="text" class="form-control form-control-sm bg-secondary text-center" name="Number" value="@product.SOLUONG">
+                                            <div class="input-group-btn">
+                                                <button class="btn btn-sm btn-primary btn-plus">
+                                                    <i class="fa fa-plus"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        @*<button type="submit" class="btn btn-primary"><i class="fa-solid fa-rotate-right"></i></button>*@
+                                    }
+                                </td>
+                                @*Giá tiền đã cộng với số lượng*@
+                                <td class="align-middle">@Convert.ToDecimal(product.THANHTIEN()).ToString("N0")đ</td>
+                                @*Nút xóa sản phẩm*@
+                                <td class="align-middle">
+                                    <a href="@Url.Action("DeleteCartItem", "Cart", new { id = product.IDTOUR })" class="btn btn-sm btn-primary">
+                                        <i class="fa fa-times"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <td style="text-align: center" colspan="5">
+                            <p style="padding: 10px; color: red; font-size: 18px;">
+                                @if (ViewBag.ThongBaoCartNull != null)
+                                {@ViewBag.ThongBaoCartNull}
+                            </p>
+                            @Html.Action("CartNull", "Cart")
+                        </td>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="col-lg-4">
+            @if (Session["TaiKhoan"] != null)
+            {
+                <form method="POST" action="/Cart/ConfirmCart" class="register-form" id="register-form" enctype="multipart/form-data">
+                    <div class="card border-secondary mb-5">
+                        <div class="form-space-between">
+                            <div class="card-header bg-secondary border-0" style="display: flex;">
+                                <h4 class="font-weight-semi-bold m-0">Giao tới</h4>
+                                <span style="position: absolute; right: 10px;">
+                                    @Html.ActionLink("Thay đổi", "ResetAddress", null, new { @class = "resetAddress" })
+                                </span>
+                            </div>
+                        </div>
+                        <div class="info">
+                            <input type="text" name="HOTENKH" value="@customer.HOTENKH" placeholder="Họ tên" style="background: white;" class="form-control p-4" readonly />
+                            <input type="text" name="SDT" value="@customer.SDT" placeholder="Số điện thoại" style="background: white;" class="form-control p-4" readonly />
+                            <input type="text" name="DIACHI" value="@customer.DIACHI" placeholder="Địa chỉ" style="background: white;" class="form-control p-4" readonly />
+                            <select style="display: block; width: 100%; height: calc(1.5em + 0.75rem + 2px); padding-left: 21px; font-size: 1rem; font-weight: 400; line-height: 1.5; color: #495057; background-color: #fff; background-clip: padding-box; border: 1px solid #EDF1FF; border-radius: 0;" id="pttt" tabindex="8" name="pttt" required>
+                                <option value="" selected>Chọn phương thức thanh toán</option>
+                                <option value="Thanh toán COD">Thanh toán COD</option>
+                                <option value="Thanh toán thẻ Banking">Thanh toán thẻ Banking</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="info">
+                        <input type="text" name="HOTENKH" value="@customer.HOTENKH" placeholder="Họ tên" style="background: white;" class="form-control p-4" readonly />
+                        <input type="text" name="SDT" value="@customer.SDT" placeholder="Số điện thoại" style="background: white;" class="form-control p-4" readonly />
+                        <input type="text" name="DIACHI" value="@customer.DIACHI" placeholder="Địa chỉ" style="background: white;" class="form-control p-4" readonly />
+                    </div>
+                @*</div>*@
+          
+               @* <div class="card border-secondary mb-5">
+                    <div class="form-space-between">
+                        <div class="card-header bg-secondary border-0" style="display: flex;">
+                            <h4 class="font-weight-medium">Khuyến mãi</h4>
+                            <span style="position: absolute; right: 10px;">
+                                @Html.ActionLink("Thay đổi", "ResetAddress", null, new { @class = "resetAddress" })
+                            </span>
+                        </div>
+                    </div>
+                    <div class="info">
+                        <div>
+
+                        </div>
+                    </div>
+                </div>*@
+               
+                <!--<form class="mb-5" action="">
+                    <div class="input-group">-->
+                        @*Thêm voucher*@
+                        <!--<h6 class="font-weight-medium">@Session["TENKM"]</h6>
+                    </div>
+                </form>-->
+                <div class="card border-secondary mb-5">
+                    <div class="card-header bg-secondary border-0">
+                        <h4 class="font-weight-semi-bold m-0">Tổng tiền</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between mb-3 pt-1">
+                            @*Tiền sách tạm tính*@
+                            <h6 class="font-weight-medium">Tạm tính</h6>
+                            <h6 class="font-weight-medium">@Convert.ToDecimal(ViewBag.TotalPrice).ToString("N0")đ</h6>
+                        </div>
+                        <div class="d-flex justify-content-between mb-3 pt-1">
+                            @*Tiền giảm giá*@
+                            <h6 class="font-weight-medium">Giảm giá</h6>
+                            <h6 class="font-weight-medium">@Convert.ToDecimal(ViewBag.DiscountPrice).ToString("N0")đ</h6>
+                        </div>
+                    </div>
+                    <div class="card-footer border-secondary bg-transparent">
+                        <div class="d-flex justify-content-between mt-2">
+                            @*Tổng tiền tất cả*@
+                            <h5 class="font-weight-bold">Tổng cộng</h5>
+                            <h5 class="font-weight-bold">@Convert.ToDecimal(ViewBag.TotalPriceAfterDiscount).ToString("N0")đ</h5>
+                        </div>
+                        <div class="card-footer border-secondary bg-transparent">
+                            <div class="d-flex justify-content-between mt-2">
+                                @*Tổng tiền tất cả*@
+                                <h5 class="font-weight-bold">Tổng cộng</h5>
+                                <h5 class="font-weight-bold">@Convert.ToDecimal(ViewBag.TotalPrice).ToString("N0")đ</h5>
+                            </div>
+                            @*Bấm thanh toán chuyển sang trang Thanh Toán*@
+                            <input type="submit" value="Tiến hành thanh toán" class="btn btn-block btn-primary my-3 py-3" />
+                        </div>
+                    </div>
+                    </div>
+                </form>
+            }
+            else
+            {
+                using (Html.BeginForm("ConfirmCart", "Cart", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="card border-secondary mb-5">
+                        <div class="form-space-between">
+                            <div class="card-header bg-secondary border-0" style="display: flex;">
+                                <h4 class="font-weight-semi-bold m-0">Giao tới</h4>
+                                <span style="position: absolute; right: 10px;">
+                                    @Html.ActionLink("Thay đổi", "ResetAddress", null, new { @class = "resetAddress" })
+                                </span>
+                            </div>
+                        </div>
+                        <div class="info">
+                            <input type="text" name="HOTENKH" value="" placeholder="Họ tên" class="form-control p-4" required />
+                            <input type="text" name="SDT" value="" placeholder="Số điện thoại" class="form-control p-4" required />
+                            <input type="text" name="DIACHI" value="" placeholder="Địa chỉ" class="form-control p-4" required />
+                            <select style="display: block; width: 100%; height: calc(1.5em + 0.75rem + 2px); padding-left: 21px; font-size: 1rem; font-weight: 400; line-height: 1.5; color: #495057; background-color: #fff; background-clip: padding-box; border: 1px solid #EDF1FF; border-radius: 0;" id="pttt" tabindex="8" name="pttt" required>
+                                <option value="" selected>Chọn phương thức thanh toán</option>
+                                <option value="Thanh toán COD">Thanh toán COD</option>
+                                <option value="Thanh toán thẻ Banking">Thanh toán thẻ Banking</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="input-group mb-5">
+                        @foreach (var product in Model)
+                        {
+                            @*Thêm voucher*@
+                            //<h6 class="font-weight-medium">@Convert.ToDecimal(product.GIATRI).ToString("N0")%</h6>
+                        }
+                    </div>
+                    <div class="card border-secondary mb-5">
+                        <div class="card-header bg-secondary border-0">
+                            <h4 class="font-weight-semi-bold m-0">Tổng tiền</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between mb-3 pt-1">
+                                @*Tiền sách tổng*@
+                                <h6 class="font-weight-medium">Tạm tính</h6>
+                                <h6 class="font-weight-medium">@Convert.ToDecimal(ViewBag.TotalPrice).ToString("N0")đ</h6>
+                            </div>
+                            <div class="d-flex justify-content-between mb-3 pt-1">
+                                @*Tiền sách tổng*@
+                                <h6 class="font-weight-medium">Giảm giá</h6>
+                                <h6 class="font-weight-medium">0đ</h6>
+                            </div>
+                        </div>
+                        <div class="card-footer border-secondary bg-transparent">
+                            <div class="d-flex justify-content-between mt-2">
+                                @*Tổng tiền tất cả*@
+                                <h5 class="font-weight-bold">Tổng cộng</h5>
+                                <h5 class="font-weight-bold">@Convert.ToDecimal(ViewBag.TotalPrice).ToString("N0")đ</h5>
+                            </div>
+                            @*Bấm thanh toán chuyển sang trang Thanh Toán*@
+                        </div>
+                    </div>
+                    <div style=" margin-top: 16px;">
+                        <input type="submit" value="Đặt Hàng" class="btn btn-block btn-primary my-3 py-3" />
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>
+<!-- Cart End -->

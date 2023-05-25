@@ -1,0 +1,44 @@
+﻿@model LTWNC.Models.KHUYENMAI
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutManagement.cshtml";
+}
+
+
+<link href="~/Content/management-form.css" rel="stylesheet" />
+<script src="~/Scripts/main.js" language="JavaScript" type="text/javascript"></script>
+
+<div class="box-form">
+    <h4 class="title-form">CHI TIẾT KHUYẾN MÃI - @Model.TENKM</h4>
+    <div class="form-horizontal">
+        <div class="form-group row p-0">
+            <span class="col label-name">ID Khuyến Mãi</span>
+            <span class="input-form col-10" style="background-color:#fff;">@Html.DisplayFor(model => model.IDKM)</span>
+        </div>
+        <div class="form-group row p-0">
+            <span class="col label-name">Tên Khuyến Mãi</span>
+            <span class="input-form col-10" style="background-color:#fff;">@Html.DisplayFor(model => model.TENKM)</span>
+        </div>
+
+        <div class="form-group row p-0">
+            <span class="col label-name">Giá Trị</span>
+            <span class="input-form col-10" style="background-color:#fff;">@Html.DisplayFor(model => model.GIATRI)</span>
+        </div>
+
+        <div class="form-group row p-0">
+            <span class="col label-name">Ngày Tạo</span>
+            <span class="input-form col-10" style="background-color:#fff;">@Html.DisplayFor(model => model.NGAYTAO)</span>
+        </div>
+
+        <div class="form-group row p-0">
+            <span class="col label-name">Ngày Hết</span>
+            <span class="input-form col-10" style="background-color:#fff;">@Html.DisplayFor(model => model.NGAYHET)</span>
+        </div>
+
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.IDKM }) |
+    @Html.ActionLink("Trở lại", "QuanLyKhuyenMai" , "Management")
+</p>
+

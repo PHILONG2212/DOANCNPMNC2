@@ -1,0 +1,100 @@
+﻿@using LTWNC.Models;
+@model IEnumerable<LTWNC.Models.KHUYENMAI>
+
+@{
+    ViewBag.Title = "Quản Lý Khuyến mãi";
+    ViewBag.Current = "QuanLyKhuyenMai";
+    Layout = "~/Views/Shared/_LayoutManagement.cshtml";
+    TAIKHOAN user = Session["User"] as TAIKHOAN;
+}
+<link href="https://cdn.datatables.net/1.13.3/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="~/Scripts/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.3/js/dataTables.bootstrap5.min.js"></script>
+
+<p class="btn btn-success">
+    @Html.ActionLink("Thêm Khuyến mãi", "Create", "KHUYENMAIs")
+</p>
+
+<style>
+    .product-meta {
+        max-width: 150px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+        .product-meta:hover {
+            width: 300px;
+            white-space: normal;
+            overflow: hidden;
+            cursor: pointer;
+        }
+</style>
+
+<div class="box-section-content">
+    <table id="example" class="table table-striped" style="width:100%;">
+        <thead>
+            <tr>
+                <th>Tên khuyến mãi</th>
+                <th>Giá trị</th>
+                <th>Ngày tạo</th>
+                <th>Ngày hết</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TENKM)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GIATRI)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NGAYTAO)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NGAYHET)
+                    </td>
+                    <td style="text-align: center;">
+                        <span class="btn btn-warning">
+                            <a href="@Url.Action("Edit", "KHUYENMAIs", new { id = item.IDKM })" class="">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </a>
+                        </span>
+
+                        <span class="btn btn-primary">
+                            <a href="@Url.Action("Details", "KHUYENMAIs", new { id = item.IDKM })" class="">
+                                <i class="fa-solid fa-circle-info"></i>
+                            </a>
+                        </span>
+
+                        <span class="btn btn-danger">
+                            <a href="@Url.Action("Delete", "KHUYENMAIs", new { id = item.IDKM })" class="">
+                                <i class="fa-solid fa-trash"></i>
+                            </a>
+                        </span>
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Tên khuyến mãi</th>
+                <th>Giá trị</th>
+                <th>Ngày tạo</th>
+                <th>Ngày hết</th>
+                <th></th>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#example').DataTable();
+    });
+</script>

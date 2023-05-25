@@ -1,0 +1,29 @@
+﻿@model LTWNC.Models.DANHMUC
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutManagement.cshtml";
+}
+
+
+<link href="~/Content/management-form.css" rel="stylesheet" />
+<script src="~/Scripts/main.js" language="JavaScript" type="text/javascript"></script>
+
+<div class="box-form">
+    <h4 class="title-form">CHI TIẾT DANH MỤC - @Model.TENDANHMUC</h4>
+    <div class="form-horizontal">
+        <div class="form-group row p-0">
+            <span class="col label-name">ID Danh Mục</span>
+            <span class="input-form col-10" style="background-color:#fff;">@Html.DisplayFor(model => model.IDDANHMUC)</span>
+        </div>
+        <div class="form-group row p-0">
+            <span class="col label-name">Tên Danh Mục</span>
+            <span class="input-form col-10" style="background-color:#fff;">@Html.DisplayFor(model => model.TENDANHMUC)</span>
+        </div>
+
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Trở lại", "QuanLyDanhMuc", "Management")
+</p>
+

@@ -1,0 +1,66 @@
+﻿@model LTWNC.Models.KHACHHANG
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutManagement.cshtml";
+}
+
+
+<link href="~/Content/management-form.css" rel="stylesheet" />
+<script src="~/Scripts/main.js" language="JavaScript" type="text/javascript"></script>
+
+<div class="box-form">
+    <h4 class="title-form">CHI TIẾT KHÁCH HÀNG - @Model.HOTENKH</h4>
+    <div class="form-horizontal">
+        <div class="form-group row p-0">
+            <span class="col label-name">ID Khách Hàng</span>
+            <span class="input-form col-10" style="background-color:#fff;">@Html.DisplayFor(model => model.IDKH)</span>
+        </div>
+        <div class="form-group row p-0">
+            <span class="col label-name">Họ Và Tên</span>
+            <span class="input-form col-10" style="background-color:#fff;">@Html.DisplayFor(model => model.HOTENKH)</span>
+        </div>
+
+        <div class="form-group row p-0">
+            <span class="col label-name">Email</span>
+            <span class="input-form col-10" style="background-color:#fff;">@Html.DisplayFor(model => model.EMAIL)</span>
+        </div>
+
+        <div class="form-group row p-0">
+            <span class="col label-name">Số Điện Thoại</span>
+            <span class="input-form col-10" style="background-color:#fff;">@Html.DisplayFor(model => model.SDT)</span>
+        </div>
+
+        <div class="form-group row p-0">
+            <span class="col label-name">Địa Chỉ</span>
+            <span class="input-form col-10" style="background-color:#fff;">@Html.DisplayFor(model => model.DIACHI)</span>
+        </div>
+        <div class="form-group row p-0">
+            <span class="col label-name">Hình Ảnh</span>
+            <div class="input-form col-10" style="background-color:#fff;">
+                @if (Model.AVATARKH == null)
+                {
+                    <img src="~/Content/Images/No_Image_Available.jpg" class="img-create" alt="Thêm Sản Phẩm" id="previewImg" />
+                }
+                else
+                {
+                    <img src="@Url.Content(Model.AVATARKH)" class="img-create" alt="Thêm Sản Phẩm" id="previewImg" />
+                }
+            </div>
+        </div>
+
+        <div class="form-group row p-0">
+            <span class="col label-name">Loại Khách Hàng</span>
+            <span class="input-form col-10" style="background-color:#fff;">@Html.DisplayFor(model => model.LOAIKHACHHANG.TENLOAI)</span>
+        </div>
+
+        <div class="form-group row p-0">
+            <span class="col label-name">Khuyến mãi</span>
+            <span class="input-form col-10" style="background-color:#fff;">@Html.DisplayFor(model => model.KHUYENMAI.TENKM)</span>
+        </div>
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.IDKH }) |
+    @Html.ActionLink("Trở lại", "KhachHang", "Management")
+</p>
+

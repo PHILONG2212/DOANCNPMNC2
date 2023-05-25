@@ -1,0 +1,54 @@
+﻿@model LTWNC.Models.KHUYENMAI
+
+@{ 
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutManagement.cshtml"; 
+}
+
+
+<link href="~/Content/management-form.css" rel="stylesheet" />
+<script src="~/Scripts/main.js" language="JavaScript" type="text/javascript"></script>
+
+<div class="box-form">
+    @using (Html.BeginForm("Create", "KHUYENMAIs", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+    {
+                @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <h4 class="title-form">THÊM Khuyến mãi</h4>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group row p-0">
+            <span class="col label-name">Tên Khuyến mãi</span>
+            @Html.EditorFor(model => model.TENKM, new { htmlAttributes = new { @class = "input-form col-10" } })
+            @Html.ValidationMessageFor(model => model.TENKM, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group row p-0">
+            <span class="col label-name">Giá trị</span>
+            @Html.EditorFor(model => model.GIATRI, new { htmlAttributes = new { @class = "input-form col-10" } })
+            @Html.ValidationMessageFor(model => model.GIATRI, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group row p-0">
+            <span class="col label-name">Ngày tạo</span>
+            @Html.EditorFor(model => model.NGAYTAO, new { htmlAttributes = new { @class = "input-form col-10" } })
+            @Html.ValidationMessageFor(model => model.NGAYTAO, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group row p-0">
+            <span class="col label-name">Ngày hết</span>
+            @Html.EditorFor(model => model.NGAYHET, new { htmlAttributes = new { @class = "input-form col-10" } })
+            @Html.ValidationMessageFor(model => model.NGAYHET, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-btn d-flex justify-content-center form-btn">
+            <input type="submit" value="Thêm khuyến mãi" class="btn btn-primary" style="width: 100%" />
+        </div>
+    </div>
+     }
+</div>
+<div>
+    @Html.ActionLink("Trở Lại", "QuanlyKhuyenMai", "Management")
+</div>
+
+@Scripts.Render("~/bundles/jquery")

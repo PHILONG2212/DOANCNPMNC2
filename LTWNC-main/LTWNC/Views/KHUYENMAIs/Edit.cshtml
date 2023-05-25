@@ -1,0 +1,54 @@
+﻿@model LTWNC.Models.KHUYENMAI
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutManagement.cshtml";
+}
+
+<link href="~/Content/management-form.css" rel="stylesheet" />
+<script src="~/Scripts/main.js" language="JavaScript" type="text/javascript"></script>
+
+<div class="box-form">
+    @using (Html.BeginForm("Edit", "KHUYENMAIs", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-horizontal">
+            <h4 class="title-form">CHỈNH SỬA KHUYẾN MÃI - @Model.TENKM</h4>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            @Html.HiddenFor(model => model.IDKM);
+            <div class="form-group row p-0">
+                <span class="col label-name">Tên Khuyến Mãi</span>
+                @Html.EditorFor(model => model.TENKM, new { htmlAttributes = new { @class = "input-form col-10" } })
+                @Html.ValidationMessageFor(model => model.TENKM, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group row p-0">
+                <span class="col label-name">Giá Trị</span>
+                @Html.EditorFor(model => model.GIATRI, new { htmlAttributes = new { @class = "input-form col-10" } })
+                @Html.ValidationMessageFor(model => model.GIATRI, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group row p-0">
+                <span class="col label-name">Ngày Tạo</span>
+                @Html.EditorFor(model => model.NGAYTAO, new { htmlAttributes = new { @class = "input-form col-10" } })
+                @Html.ValidationMessageFor(model => model.NGAYTAO, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group row p-0">
+                <span class="col label-name">Ngày Hết</span>
+                @Html.TextAreaFor(model => model.NGAYHET, new { htmlAttributes = new { @class = "input-form col-10" } })
+                @Html.ValidationMessageFor(model => model.NGAYHET, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="d-flex justify-content-center form-btn">
+                <input type="submit" value="Lưu" class="btn btn-warning" style="width: 100%" />
+            </div>
+        </div>
+    }
+</div>
+<div>
+    @Html.ActionLink("Trở Lại", "QuanlyKhuyenMai", "Management")
+</div>
+
+@Scripts.Render("~/bundles/jquery")
